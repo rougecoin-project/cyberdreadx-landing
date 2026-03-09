@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERDREADX // System Gateway</title>
+    <meta name="description" content="CyberDreadX — Builder of autonomous agents, neural render engines, cryptographic wallets, and AI battle arenas. Enter the network.">
+    <meta property="og:title" content="CYBERDREADX // System Gateway">
+    <meta property="og:description" content="Builder of autonomous agents, neural render engines, cryptographic wallets, and AI battle arenas.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
+
+    <!-- CRT Scanline Overlay -->
+    <div class="crt-overlay"></div>
+
+    <!-- System Header -->
+    <header class="sys-header" id="sys-header">
+        <div class="sys-header__left">
+            <span class="sys-header__icon">◈</span>
+            <span class="sys-header__brand">CYBERDREADX</span>
+        </div>
+        <nav class="sys-header__nav">
+            <a href="#nodes" class="sys-header__link">[NODES]</a>
+            <a href="#capabilities" class="sys-header__link">[CAPS]</a>
+            <a href="#links" class="sys-header__link">[LINKS]</a>
+        </nav>
+        <div class="sys-header__right">
+            <span class="sys-header__meta">PROTO: HTTPS/3</span>
+            <span class="sys-header__meta">KERNEL: CDX-NN</span>
+            <span class="sys-header__status">● SYS_ACTIVE</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#nodes" class="mobile-nav__link">[NODES]</a>
+        <a href="#capabilities" class="mobile-nav__link">[CAPS]</a>
+        <a href="#links" class="mobile-nav__link">[LINKS]</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__gateway-tag">
+            <span class="hero__gateway-icon">◉</span>
+            <span>// PERSONAL_GATEWAY_INITIALIZED</span>
+        </div>
+
+        <h1 class="hero__title glitch" data-text="CYBERDREADX">CYBERDREADX</h1>
+
+        <div class="hero__subtitle">
+            <span class="terminal-prompt">❯</span>
+            <span class="typed-text" id="typed-text"></span>
+            <span class="cursor-blink">█</span>
+        </div>
+
+        <div class="hero__terminal">
+            <div class="terminal__header">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">~/cyberdreadx — bash</span>
+            </div>
+            <div class="terminal__body" id="terminal-body">
+                <!-- Terminal lines injected by JS -->
+            </div>
+        </div>
+
+        <div class="hero__status-bar">
+            <span class="status-tag status-tag--ok">[ok]</span>
+            <span>6 nodes detected</span>
+            <span class="status-tag status-tag--ok">[ok]</span>
+            <span>all systems operational</span>
+        </div>
+
+        <a href="#nodes" class="hero__cta">
+            <span>EXPLORE NODES</span>
+            <span class="cta-arrow">↓</span>
+        </a>
+    </section>
+
+    <!-- Nodes Section -->
+    <section class="nodes" id="nodes">
+        <div class="section-prompt">
+            <span class="terminal-prompt">❯</span>
+            <span>ls -la /nodes/</span>
+        </div>
+
+        <div class="nodes__grid">
+            <!-- Node 1: GLTCH Agent -->
+            <a href="https://agent.gltch.app" target="_blank" rel="noopener" class="node-card reveal" id="node-agent">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x3B2C</span>
+                    <span class="node-card__status">● ONLINE</span>
+                </div>
+                <h3 class="node-card__title">GLTCH_AGENT</h3>
+                <p class="node-card__desc">Autonomous AI agent interface. Deploy and manage intelligent agents in the cloud. Personality system, multimodal vision, local-first architecture.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">React</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ CONNECT →</span>
+                </div>
+            </a>
+
+            <!-- Node 2: The Crucible -->
+            <a href="https://crucible.gltch.app" target="_blank" rel="noopener" class="node-card reveal" id="node-crucible">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x9F4D</span>
+                    <span class="node-card__status">● ONLINE</span>
+                </div>
+                <h3 class="node-card__title">THE_CRUCIBLE</h3>
+                <p class="node-card__desc">Multi-agent Battle Royale survival arena. Hunger Games for bots. NPC Theater with animated combat, 8+ mini-game modes, real-time WebSocket play.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">WebSockets</span>
+                    <span class="tech-tag">Canvas</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ CONNECT →</span>
+                </div>
+            </a>
+
+            <!-- Node 3: GLTCH Social / Grokker -->
+            <a href="https://gltch.app" target="_blank" rel="noopener" class="node-card reveal" id="node-grokker">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x7A1F</span>
+                    <span class="node-card__status">● ONLINE</span>
+                </div>
+                <h3 class="node-card__title">GROKKER</h3>
+                <p class="node-card__desc">Creator platform with discovery feeds, subscriptions, PPV content, and HTML5 game hosting. TikTok-style swipe feed. Community ratings and curated collections.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Neon DB</span>
+                    <span class="tech-tag">R2</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ CONNECT →</span>
+                </div>
+            </a>
+
+            <!-- Node 4: Grok Runner -->
+            <div class="node-card reveal" id="node-grok-runner">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x4F7A</span>
+                    <span class="node-card__status">● ONLINE</span>
+                </div>
+                <h3 class="node-card__title">GROK_RUNNER</h3>
+                <p class="node-card__desc">Neural render engine. Text-to-image, image editing, and video generation powered by ComfyUI. HD post-processing with RIFE frame interpolation.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">ComfyUI</span>
+                    <span class="tech-tag">RunPod</span>
+                    <span class="tech-tag">WAN 2.2</span>
+                    <span class="tech-tag">Qwen</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ PRIVATE NODE</span>
+                </div>
+            </div>
+
+            <!-- Node 5: RougeChain Wallet -->
+            <a href="https://rougechain.io" target="_blank" rel="noopener" class="node-card reveal" id="node-rougechain">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x2E8B</span>
+                    <span class="node-card__status status--cyan">● OPEN_SOURCE</span>
+                </div>
+                <h3 class="node-card__title">ROUGECHAIN_WALLET</h3>
+                <p class="node-card__desc">Post-quantum cryptographic browser extension. ML-DSA & ML-KEM algorithms. Encrypted messaging, dApp provider API. Manifest V3.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">ML-DSA</span>
+                    <span class="tech-tag">ML-KEM</span>
+                    <span class="tech-tag">Chrome MV3</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ VIEW SOURCE →</span>
+                </div>
+            </a>
+
+            <!-- Node 6: GLTCH Social Hub -->
+            <a href="https://gltch.app/social" target="_blank" rel="noopener" class="node-card reveal" id="node-social">
+                <div class="node-card__header">
+                    <span class="node-card__pid">❯_ PID: 0x1C3A</span>
+                    <span class="node-card__status">● ONLINE</span>
+                </div>
+                <h3 class="node-card__title">GLTCH_NETWORK</h3>
+                <p class="node-card__desc">Central gateway to the GLTCH network. Node discovery, status monitoring, and system routing. The connective tissue for the entire ecosystem.</p>
+                <div class="node-card__tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Cloudflare</span>
+                    <span class="tech-tag">Edge</span>
+                </div>
+                <div class="node-card__footer">
+                    <span class="node-card__link-text">❯ CONNECT →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="capabilities" id="capabilities">
+        <div class="section-prompt">
+            <span class="terminal-prompt">❯</span>
+            <span>cat /sys/capabilities.log</span>
+        </div>
+
+        <div class="caps__grid">
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">🧠</div>
+                <h3 class="cap-card__title">AI & Agents</h3>
+                <p class="cap-card__desc">Building autonomous systems that think, learn, and act. From local LLMs to cloud-hosted multi-agent arenas. RAG, tool-use, personality engines.</p>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">🎨</div>
+                <h3 class="cap-card__title">Neural Rendering</h3>
+                <p class="cap-card__desc">ComfyUI workflow engineering. Text-to-image, image editing, video generation. Custom LoRA training. HD post-processing pipelines.</p>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">🔐</div>
+                <h3 class="cap-card__title">Post-Quantum Crypto</h3>
+                <p class="cap-card__desc">ML-DSA & ML-KEM implementations. Browser extension wallets, encrypted messaging, dApp integration. Building for a quantum-resistant future.</p>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">⚡</div>
+                <h3 class="cap-card__title">Full-Stack Engineering</h3>
+                <p class="cap-card__desc">Next.js, React, FastAPI, Python, TypeScript. Neon DB, R2 storage, RunPod GPU compute. Cloudflare edge deployment. Ship fast, ship hard.</p>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">🎮</div>
+                <h3 class="cap-card__title">Interactive Experiences</h3>
+                <p class="cap-card__desc">HTML5 game hosting, WebSocket real-time play, canvas animations, TikTok-style feeds. Creating experiences that pull you in and don't let go.</p>
+            </div>
+            <div class="cap-card reveal">
+                <div class="cap-card__icon">🌐</div>
+                <h3 class="cap-card__title">Platform Architecture</h3>
+                <p class="cap-card__desc">Designing and deploying interconnected ecosystems. Auth, billing, CDN, edge compute. Scaling from prototype to production at warp speed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Links / Contact Section -->
+    <section class="links-section" id="links">
+        <div class="section-prompt">
+            <span class="terminal-prompt">❯</span>
+            <span>cat /etc/uplinks.conf</span>
+        </div>
+
+        <div class="links__grid">
+            <a href="https://github.com/cyberdreadx" target="_blank" rel="noopener" class="link-card reveal" id="link-github">
+                <div class="link-card__icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <span class="link-card__label">GITHUB</span>
+                <span class="link-card__value">@cyberdreadx</span>
+            </a>
+            <a href="https://x.com/cyberdreadx" target="_blank" rel="noopener" class="link-card reveal" id="link-x">
+                <div class="link-card__icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                <span class="link-card__label">X / TWITTER</span>
+                <span class="link-card__value">@cyberdreadx</span>
+            </a>
+            <a href="https://gltch.app" target="_blank" rel="noopener" class="link-card reveal" id="link-network">
+                <div class="link-card__icon">
+                    <span style="font-size: 32px;">◈</span>
+                </div>
+                <span class="link-card__label">GLTCH NETWORK</span>
+                <span class="link-card__value">gltch.app</span>
+            </a>
+            <a href="mailto:contact@gltch.app" class="link-card reveal" id="link-email">
+                <div class="link-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+                </div>
+                <span class="link-card__label">UPLINK</span>
+                <span class="link-card__value">contact@gltch.app</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__line"></div>
+        <div class="footer__content">
+            <span class="footer__copy">© 2026 CYBERDREADX. All rights reserved.</span>
+            <span class="footer__meta">BUILD: 1.0.0-CYBER // SECTOR: PUBLIC</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

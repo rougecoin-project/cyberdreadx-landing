@@ -100,9 +100,9 @@ a {
 }
 
 /* ========================================
-   REALISTIC CRT EFFECT SYSTEM
-   5 layers: scanlines, phosphor grid,
-   vignette, scan beam, flicker
+   REALISTIC CRT EFFECT SYSTEM — CRANKED
+   6 layers: scanlines, phosphor grid,
+   vignette, scan beam, flicker, color tint
    ======================================== */
 .crt-system {
     position: fixed;
@@ -114,7 +114,7 @@ a {
     pointer-events: none;
 }
 
-/* Layer 1: SCANLINES — horizontal lines across screen */
+/* Layer 1: THICK SCANLINES — heavy horizontal bands */
 .crt-scanlines {
     position: absolute;
     inset: 0;
@@ -122,108 +122,150 @@ a {
         0deg,
         transparent,
         transparent 1px,
-        rgba(0, 0, 0, 0.12) 1px,
-        rgba(0, 0, 0, 0.12) 3px
+        rgba(0, 0, 0, 0.25) 1px,
+        rgba(0, 0, 0, 0.25) 2px
     );
     z-index: 1;
 }
 
-/* Layer 2: PHOSPHOR RGB SUB-PIXEL GRID
-   The key to realistic CRT — tiny RGB dots like real phosphor coating.
-   Uses an inline SVG as background-image for the dot pattern. */
+/* Layer 2: PHOSPHOR RGB SUB-PIXEL GRID — cranked up
+   Visible RGB column pattern like real phosphor glass */
 .crt-phosphor {
     position: absolute;
     inset: 0;
     z-index: 2;
-    opacity: 0.04;
+    opacity: 0.08;
     background-image:
         repeating-linear-gradient(
             90deg,
-            rgba(255, 0, 0, 1) 0px,
-            rgba(255, 0, 0, 1) 1px,
-            rgba(0, 255, 0, 1) 1px,
-            rgba(0, 255, 0, 1) 2px,
-            rgba(0, 0, 255, 1) 2px,
-            rgba(0, 0, 255, 1) 3px,
+            rgba(255, 40, 40, 0.8) 0px,
+            rgba(255, 40, 40, 0.8) 1px,
+            rgba(40, 255, 40, 0.8) 1px,
+            rgba(40, 255, 40, 0.8) 2px,
+            rgba(40, 40, 255, 0.8) 2px,
+            rgba(40, 40, 255, 0.8) 3px,
             transparent 3px,
-            transparent 4px
+            transparent 3px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.15) 2px,
+            rgba(0, 0, 0, 0.15) 3px
         );
-    background-size: 4px 4px;
+    background-size: 3px 3px;
     mix-blend-mode: screen;
 }
 
-/* Layer 3: VIGNETTE — dark edges like CRT tube curvature */
+/* Layer 3: HEAVY VIGNETTE — deep dark edges */
 .crt-vignette {
     position: absolute;
     inset: 0;
     z-index: 3;
     background: radial-gradient(
         ellipse at center,
-        transparent 50%,
-        rgba(0, 0, 0, 0.25) 70%,
-        rgba(0, 0, 0, 0.65) 85%,
-        rgba(0, 0, 0, 0.9) 100%
+        transparent 35%,
+        rgba(0, 0, 0, 0.3) 55%,
+        rgba(0, 0, 0, 0.6) 70%,
+        rgba(0, 0, 0, 0.85) 85%,
+        rgba(0, 0, 0, 0.98) 100%
     );
 }
 
-/* Layer 4: SCAN BEAM — the sweeping horizontal line */
+/* Layer 4: BRIGHT SCAN BEAM — visible sweeping line */
 .crt-scanbeam {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 6px;
+    height: 80px;
     z-index: 4;
     background: linear-gradient(
         180deg,
         transparent,
-        rgba(168, 85, 247, 0.06) 30%,
-        rgba(168, 85, 247, 0.12) 50%,
-        rgba(168, 85, 247, 0.06) 70%,
+        rgba(168, 85, 247, 0.03) 20%,
+        rgba(200, 200, 255, 0.06) 40%,
+        rgba(200, 200, 255, 0.08) 50%,
+        rgba(200, 200, 255, 0.06) 60%,
+        rgba(168, 85, 247, 0.03) 80%,
         transparent
     );
-    animation: crt-beam-sweep 6s linear infinite;
+    animation: crt-beam-sweep 4s linear infinite;
 }
 
-/* Layer 5: SCREEN FLICKER — subtle luminance variation */
+/* Layer 5: SCREEN FLICKER — visible luminance variation */
 .crt-flicker {
     position: absolute;
     inset: 0;
     z-index: 5;
     background: transparent;
-    animation: crt-flicker-anim 0.15s infinite;
-    opacity: 0.015;
+    animation: crt-flicker-anim 0.08s infinite;
+    opacity: 0.03;
 }
 
-/* Chromatic aberration on body text — subtle color fringe */
+/* Heavy chromatic aberration on ALL text */
 body {
     text-shadow:
-        0.3px 0 0 rgba(255, 0, 0, 0.12),
-        -0.3px 0 0 rgba(0, 100, 255, 0.12);
+        0.6px 0 0 rgba(255, 0, 0, 0.18),
+        -0.6px 0 0 rgba(0, 80, 255, 0.18);
 }
 
-/* Enhanced chromatic aberration on glitch title */
+/* HEAVY chromatic aberration on glitch title */
 .hero__title {
     text-shadow:
-        0 0 40px rgba(255, 0, 170, 0.4),
-        0 0 80px rgba(255, 0, 170, 0.2),
-        0 0 120px rgba(168, 85, 247, 0.1),
-        1px 0 0 rgba(255, 0, 0, 0.2),
-        -1px 0 0 rgba(0, 100, 255, 0.2);
+        0 0 60px rgba(255, 0, 170, 0.5),
+        0 0 120px rgba(255, 0, 170, 0.3),
+        0 0 200px rgba(168, 85, 247, 0.15),
+        2px 0 0 rgba(255, 0, 0, 0.3),
+        -2px 0 0 rgba(0, 80, 255, 0.3);
 }
 
-/* CRT Beam Sweep Animation */
+/* Chromatic aberration on node card titles */
+.node-card__title {
+    text-shadow:
+        1px 0 0 rgba(255, 0, 0, 0.2),
+        -1px 0 0 rgba(0, 80, 255, 0.2);
+}
+
+/* Chromatic aberration on neon green elements */
+.hero__gateway-tag,
+.sys-header__status {
+    text-shadow:
+        var(--glow-green),
+        0.5px 0 0 rgba(255, 0, 0, 0.15),
+        -0.5px 0 0 rgba(0, 80, 255, 0.15);
+}
+
+/* CRT Beam Sweep Animation — faster */
 @keyframes crt-beam-sweep {
-    0% { top: -6px; }
+    0% { top: -80px; }
     100% { top: 100%; }
 }
 
-/* Screen Flicker Animation */
+/* Screen Flicker Animation — more aggressive */
 @keyframes crt-flicker-anim {
     0% { background: rgba(200, 200, 255, 1); }
-    25% { background: transparent; }
-    50% { background: rgba(200, 200, 255, 0.6); }
-    75% { background: transparent; }
-    100% { background: rgba(200, 200, 255, 0.8); }
+    20% { background: transparent; }
+    40% { background: rgba(200, 200, 255, 0.7); }
+    60% { background: transparent; }
+    80% { background: rgba(200, 200, 255, 0.5); }
+    100% { background: transparent; }
+}
+
+/* Random interference noise — occasional horizontal tear */
+@keyframes crt-interference {
+    0%, 97%, 100% { clip-path: none; opacity: 0; }
+    97.5% {
+        clip-path: polygon(0 42%, 100% 42%, 100% 44%, 0 44%);
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.04);
+    }
+    98% {
+        clip-path: polygon(0 67%, 100% 67%, 100% 68%, 0 68%);
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.03);
+    }
+    98.5% { clip-path: none; opacity: 0; }
 }
 
 /* ========================================
@@ -438,7 +480,8 @@ body {
     font-size: 16px;
     color: var(--text-secondary);
     margin-top: var(--space-lg);
-    min-height: 1.7em;
+    height: 2em;
+    overflow: hidden;
     animation: fadeInUp 1.2s ease-out;
 }
 
@@ -494,7 +537,8 @@ body {
     padding: var(--space-md);
     font-size: 13px;
     line-height: 1.8;
-    min-height: 120px;
+    height: 220px;
+    overflow: hidden;
     text-align: left;
 }
 

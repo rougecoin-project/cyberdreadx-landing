@@ -99,8 +99,12 @@ a {
     opacity: 0.07;
 }
 
-/* -- CRT Scanline Overlay -- */
-.crt-overlay {
+/* ========================================
+   REALISTIC CRT EFFECT SYSTEM
+   5 layers: scanlines, phosphor grid,
+   vignette, scan beam, flicker
+   ======================================== */
+.crt-system {
     position: fixed;
     top: 0;
     left: 0;
@@ -108,13 +112,118 @@ a {
     height: 100%;
     z-index: 1;
     pointer-events: none;
+}
+
+/* Layer 1: SCANLINES — horizontal lines across screen */
+.crt-scanlines {
+    position: absolute;
+    inset: 0;
     background: repeating-linear-gradient(
         0deg,
         transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.03) 2px,
-        rgba(0, 0, 0, 0.03) 4px
+        transparent 1px,
+        rgba(0, 0, 0, 0.12) 1px,
+        rgba(0, 0, 0, 0.12) 3px
     );
+    z-index: 1;
+}
+
+/* Layer 2: PHOSPHOR RGB SUB-PIXEL GRID
+   The key to realistic CRT — tiny RGB dots like real phosphor coating.
+   Uses an inline SVG as background-image for the dot pattern. */
+.crt-phosphor {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.04;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 1) 0px,
+            rgba(255, 0, 0, 1) 1px,
+            rgba(0, 255, 0, 1) 1px,
+            rgba(0, 255, 0, 1) 2px,
+            rgba(0, 0, 255, 1) 2px,
+            rgba(0, 0, 255, 1) 3px,
+            transparent 3px,
+            transparent 4px
+        );
+    background-size: 4px 4px;
+    mix-blend-mode: screen;
+}
+
+/* Layer 3: VIGNETTE — dark edges like CRT tube curvature */
+.crt-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 50%,
+        rgba(0, 0, 0, 0.25) 70%,
+        rgba(0, 0, 0, 0.65) 85%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+}
+
+/* Layer 4: SCAN BEAM — the sweeping horizontal line */
+.crt-scanbeam {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    z-index: 4;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(168, 85, 247, 0.06) 30%,
+        rgba(168, 85, 247, 0.12) 50%,
+        rgba(168, 85, 247, 0.06) 70%,
+        transparent
+    );
+    animation: crt-beam-sweep 6s linear infinite;
+}
+
+/* Layer 5: SCREEN FLICKER — subtle luminance variation */
+.crt-flicker {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: transparent;
+    animation: crt-flicker-anim 0.15s infinite;
+    opacity: 0.015;
+}
+
+/* Chromatic aberration on body text — subtle color fringe */
+body {
+    text-shadow:
+        0.3px 0 0 rgba(255, 0, 0, 0.12),
+        -0.3px 0 0 rgba(0, 100, 255, 0.12);
+}
+
+/* Enhanced chromatic aberration on glitch title */
+.hero__title {
+    text-shadow:
+        0 0 40px rgba(255, 0, 170, 0.4),
+        0 0 80px rgba(255, 0, 170, 0.2),
+        0 0 120px rgba(168, 85, 247, 0.1),
+        1px 0 0 rgba(255, 0, 0, 0.2),
+        -1px 0 0 rgba(0, 100, 255, 0.2);
+}
+
+/* CRT Beam Sweep Animation */
+@keyframes crt-beam-sweep {
+    0% { top: -6px; }
+    100% { top: 100%; }
+}
+
+/* Screen Flicker Animation */
+@keyframes crt-flicker-anim {
+    0% { background: rgba(200, 200, 255, 1); }
+    25% { background: transparent; }
+    50% { background: rgba(200, 200, 255, 0.6); }
+    75% { background: transparent; }
+    100% { background: rgba(200, 200, 255, 0.8); }
 }
 
 /* ========================================
@@ -292,9 +401,6 @@ a {
     font-weight: 900;
     color: #fff;
     letter-spacing: 0.15em;
-    text-shadow: 0 0 40px rgba(255, 0, 170, 0.4),
-                 0 0 80px rgba(255, 0, 170, 0.2),
-                 0 0 120px rgba(168, 85, 247, 0.1);
     position: relative;
     animation: fadeInUp 1s ease-out;
 }
